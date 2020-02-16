@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.book_item.view.*
 
-class MyAdapter(private val context: MainActivity, private val chaptersList: ArrayList<String>) :
+class MyAdapter(private val context: MainActivity, private val chaptersList: ArrayList<Book>) :
     RecyclerView.Adapter<MyAdapter.viewHolder>() {
 
 
@@ -24,10 +24,12 @@ class MyAdapter(private val context: MainActivity, private val chaptersList: Arr
     }
 
     override fun onBindViewHolder(holder: viewHolder, position: Int) {
-      holder.bookName.text = chaptersList.get(position) //To change body of created functions use File | Settings | File Templates.
+      holder.bookName.text = chaptersList.get(position).name //To change body of created functions use File | Settings | File Templates.
+        holder.bookImage.setImageResource(chaptersList.get(position).id)
     }
 
     class viewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var bookName = itemView.text_book
+        var bookImage = itemView.image_book
     }
 }
